@@ -1,0 +1,145 @@
+html, body {
+	padding:0;
+	margin:0;
+	font:16px Arial ;
+	background-image:linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),url("forrest.webp");
+	background-size: cover;
+}
+
+.pie-outer *, .pie-outer {
+	padding:0;
+	margin:0;
+}
+
+.pie-outer {
+	position:absolute;
+	top:150px;
+	left:150px;
+	padding:0;
+	margin:0;
+}
+
+.pie {
+	pointer-events:none;
+	position:absolute;
+	top:50%;
+	left:50%;
+	overflow:hidden;
+	border-radius:50%;
+	border:2px solid black;
+	padding:0;
+	margin:0;
+}
+
+.pie ul {
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+
+.pie ul:after {
+	content:" ";
+	display:block;
+	width:100%;
+	padding-top:100%;
+}
+
+.pie li {
+	position:absolute;
+	top:-50%;
+	left:-50%;
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	border:2px solid black;
+	overflow:hidden;
+	-webkit-transform-origin:100% 100%;
+	-ms-transform-origin:100% 100%;
+	transform-origin:100% 100%;
+	vertical-align: middle;
+}
+
+
+.pie a {
+	pointer-events:auto;
+	display:block;
+	position:absolute;
+	top:50.5%; 
+	left:50.5%;
+	width:100%;
+	height:100%;
+	text-decoration:none;
+	text-align:center;
+	color:#fff;
+	padding:0;
+	margin:auto;
+}
+
+.pie a:hover {
+	background:rgba(255,255,255,0.25);
+}
+
+
+@media ( min-width:42em ) {
+	/* #### - > 672px - #### */
+	.pie-outer {
+		padding:0;
+		margin:0;
+		width:40em;
+		height:40em;
+	}
+	.pie a {
+/*		font-size:16px; */
+	}
+
+}
+
+#clockContainer {
+	position: absolute;
+	top:500;
+	left:500;
+	margin: 0;
+	/*to make the height and width responsive*/
+
+	/*border:2px solid black;*/
+	/*background: url(clock.png) no-repeat;*/
+	/*background: url(calendar.png) no-repeat;*/
+	/*setting our background image*/
+	/*background-size: 100%;*/
+}
+  
+#hour,
+#minute,
+#second {
+	position: absolute;
+	background: black;
+	border-radius: 10px;
+	transform-origin: 50% 50%;
+}
+  
+*#hour {
+	/* season */
+	width: 25px;
+	height: 200px;
+	top: 270px;
+	left: 455px;
+	opacity: 0.8;
+}
+  
+#minute {
+	/* month */
+	width: 20px;
+	height: 275px;
+	top: 195px;
+	left: 457.5px;
+	opacity: 0.8;
+}
+  
+#second {
+	/* day */
+	position: absolute;
+	top: 69px;
+	left: 69px;
+}
+

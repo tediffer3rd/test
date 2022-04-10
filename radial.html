@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Calendar of Elyria</title>
+	<!--meta http-equiv="refresh" content="5"-->
+	<link rel="stylesheet" href="radial.css">
+</head>
+<body>
+
+<!-- <div style="color:red; font-weight: bold;">DO NOT PRESS THE ENTER KEY</div> -->
+<form onSubmit="return false">
+	<input type="int" id="input_id" value="0101" method="post" autofocus />
+	<input type="submit" value="Set date" onclick="setDate()" />
+	<input type="button" value="Add day" onclick="addDay()" />
+</form>
+<div id="displayDate">Enter the currentdate intehbox above and press "ENTER" or click the "Set date" button</div>
+<script src="radial.js"></script>
+
+<div id="hour"></div>
+<div id="minute"></div>
+<!--div id="second"></div-->
+
+<svg to try to create new / better clack hands >
+<svg>
+	<line id="second" x1="400" y1="400" x2="400" y2="10" style="stroke:black; stroke-width:10" />
+</svg>
+
+</body>
+</html>

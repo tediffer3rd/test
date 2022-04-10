@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>svg testing</title>
+	<!--meta http-equiv="refresh" content="5"-->
+	<link rel="stylesheet" href="radial.css">
+
+</head>
+<body>
+<script src="radial.js"></script>
+
+<!-- form to input date and buttons to set date and add day -->
+<form onSubmit="return false">
+	<input type="int" id="input_id" value="0101" method="post" autofocus />
+	<input type="submit" value="Set date" onclick="setDate()" />
+	<input type="button" value="Add day" onclick="addDay()" />
+</form>
+
+<div id="displayDate" font=size="45">Enter the current date in the box above and press "ENTER" or click the "Set date" button</div>
+
+<div class="second">
+
+<!-- svg to try to create new / better clock hands -->
+<svg width="800" height="800">
+	<path id="second" d="M 400 400 l 0 -340 l -30 -40 l 30 40 l 30 -40" stroke="black" stroke-width="10" fill="none" />
+ 	<path id="minute" d="M 400 400 l 0 -265 l -50 -40 l 50 40 l 50 -40" stroke="black" stroke-width="10" fill="none" />
+ 	<path id="hour"   d="M 400 400 l 0 -185 l -60 -40 l 60 40 l 60 -40" stroke="black" stroke-width="10" fill="none" />
+</div>
+</body>
+</html>
