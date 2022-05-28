@@ -327,7 +327,7 @@ function addDay() {
 //	pointerLinedays.setAttribute("transform", "rotate(" + newDaysRotation + " 400, 400)");
 
 	localStorage.setItem('saveDate', newDate);
-//	location.reload()
+	location.reload()
 	setDate()
 	}	
 
