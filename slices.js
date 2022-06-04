@@ -1,7 +1,7 @@
 var fontLink = document.createElement('link');
 	fontLink.setAttribute("rel", "stylesheet");
 	fontLink.setAttribute("href", "https://fonts.googleapis.com/css?family=Sofia");
-	document.head.appendChild(fontLink);
+//	document.head.appendChild(fontLink);
 var font = "font-family: Sofia; font-size: 23px;"
 
 var seasons = ["Sepren", "Somner", "Autun", "Wevner"];
@@ -16,60 +16,6 @@ var data =  [
 	Array.from(months).map(String),
 	Array.from(seasons).map(String),
 	]
-
-// add background to page
-var background = document.createElement('style');
-	var backgroundimage = "linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),url('forrest.webp')";
-	var backgroundContent = 'body { background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),url("forrest.webp"); background-size: cover; }';
-	background.appendChild(document.createTextNode(backgroundContent));
-	document.head.appendChild(background);
-
-// create form to input and add date
-var inputForm = document.createElement('form');
-//	inputForm.setAttribute("onSubmit", "return false");
-
-// create input date text box
-var inputDate = document.createElement('input');
-	inputDate.setAttribute("id", "inputDate");
-	inputDate.setAttribute("type", "int");
-	inputDate.setAttribute("value", "0101");
-	inputDate.setAttribute("method", "post");
-	inputDate.setAttribute("autofocus" , "");
-	inputForm.appendChild(inputDate);
-
-//create set date buttom
-var setDateButton = document.createElement('input');
-	setDateButton.setAttribute("id", "setDateButton");
-	setDateButton.setAttribute("type", "submit");
-	setDateButton.setAttribute("value", "Set Date");
-	setDateButton.setAttribute("onclick", "setDate()");
-	inputForm.appendChild(setDateButton);
-
-//create add day button
-var addDayButton = document.createElement('input');
-	addDayButton.setAttribute("id", "addDayButton");
-	addDayButton.setAttribute("type", "button");
-	addDayButton.setAttribute("value", "Add Day");
-	addDayButton.setAttribute("onclick", "addDay()");
-	inputForm.appendChild(addDayButton);
-
-//create reset button
-var resetButton = document.createElement('input');
-	resetButton.setAttribute("id", "resetButton");
-	resetButton.setAttribute("type", "button");
-	resetButton.setAttribute("value", "reset");
-	resetButton.setAttribute("onclick", "resetDate()");
-	inputForm.appendChild(resetButton);
-	document.body.appendChild(inputForm);
-
-// create div to display current date
-var displayDateDiv = document.createElement('div');
-	displayDateDiv.setAttribute("id", "displayDate");
-	displayDateDiv.setAttribute("style", font);
-	displayDateDivDataContent = 'Enter the current date in the box above and press "ENTER" or click the "Set date" button';
-	displayDateDiv.appendChild(document.createTextNode(displayDateDivDataContent));
-	document.body.appendChild(displayDateDiv);
-
 
 //set variables for calendar
 var xOrigin = 400;
@@ -88,7 +34,6 @@ var compassLineRotate = 0;
 // create circular div element to hold svg
 var calendar = document.createElement('div');
 	calendar.setAttribute("id", "calendar");
-	calendar.setAttribute("style", "height: 800px; width: 800px; border: 3px solid black; border-radius:50%; background: conic-gradient(from 17deg, #009900, #cc0000, #cc0000, #ff8000, #ff8000, #0000ff, #0000ff, #009900, #009900);");
 	document.body.appendChild(calendar);
 
 //create svg container
@@ -104,7 +49,6 @@ var bigRedCircle = document.createElementNS("http://www.w3.org/2000/svg", "circl
 	bigRedCircle.setAttribute("cx",xOrigin);
 	bigRedCircle.setAttribute("cy",yOrigin);
 	bigRedCircle.setAttribute("r",xOrigin);
-	bigRedCircle.setAttribute("fill","#ff0000");
 //	svg1.appendChild(bigRedCircle);
 
 // create little black dot in middle of big red circle
@@ -117,14 +61,13 @@ var littleBlackDot = document.createElementNS("http://www.w3.org/2000/svg", "cir
 	svg1.appendChild(littleBlackDot);
 
 // create 8 cardinal compass lines
-for (var i = 0; i < 4; i ++) {
+for (var i = 1; i <= 4; i ++) {
 	var compassLines = document.createElementNS("http://www.w3.org/2000/svg", "line");
 	compassLines.setAttribute("id", "line" + (i+1));
 	compassLines.setAttribute("x1", "400");
 	compassLines.setAttribute("y1", "0");
 	compassLines.setAttribute("x2", "400");
 	compassLines.setAttribute("y2", "800");
-	compassLines.setAttribute("style", "stroke:#000000; stroke-width:2");
 //	svg1.appendChild(compassLines);
 	compassLines.setAttribute("transform", "rotate(" + compassLineRotate + ", 400, 400)");
 	compassLineRotate += compassLineRotateAngle;
@@ -149,36 +92,17 @@ for (var i = 0; i < data.length; i ++) {
 		dividingCircle.setAttribute("cx",xOrigin);
 		dividingCircle.setAttribute("cy",yOrigin);
 		dividingCircle.setAttribute("r", (yOrigin - circleYoffset));
-		dividingCircle.setAttribute("stroke","black");
-		dividingCircle.setAttribute("stroke-width","3");
-		dividingCircle.setAttribute("fill","none");
 		svg1.appendChild(dividingCircle);
 
 // create pointer lines
 	var pointerLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		pointerLine.setAttribute("id", "pointerLine" + ID);
-		pointerLine.setAttribute("class", "pointerLine" + ID);
+		pointerLine.setAttribute("class", "pointerLine");
 		pointerLine.setAttribute("d", "M " + xOrigin + " " + yOrigin + " L " + xOrigin + " " + (circleYoffset-15) + " , a 50 25 0 1 1 1 0");
-		pointerLine.setAttribute("style", 'stroke: #000000; stroke-width:' + pointerLineWidth + 'px; stroke-linecap: round; ');
-	
-		var animateTransform  = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
-		animateTransform.setAttribute("id", "transform" + ID);
-//		animateTransform.setAttribute("attributeName", "transform");
-//		animateTransform.setAttribute("attributeType", "XML");
-//		animateTransform.setAttribute("type", "rotate");
-//		animateTransform.setAttribute("from", "0 400 400");
-//		animateTransform.setAttribute("to", "360 400 400");
-//		animateTransform.setAttribute("begin", "3");
-//		animateTransform.setAttribute("dur", "1");
-//		animateTransform.setAttribute("repeatCount", "1");
-	pointerLine.appendChild(animateTransform);
 	svg1.appendChild(pointerLine);
-
-		pointerLineWidth += pointerLineWidthAdjust;
 
 // set variables for segments & rotation
 		var numSegments = dataItem.length;
-		var textxOrigin = xOrigin-(xOrigin/numSegments);
 		var rotateAngle = 360/numSegments;
 		var textRotate = rotateAngle/2;
 		var textLineRotate = rotateAngle;
@@ -191,10 +115,9 @@ for (var i = 0; i < data.length; i ++) {
 			var textLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
 			textLine.setAttribute("id", ID + "textLine" + j);
 			textLine.setAttribute("x1", xOrigin);
-			textLine.setAttribute("y1", (circleYoffset));
+			textLine.setAttribute("y1", circleYoffset);
 			textLine.setAttribute("x2", xOrigin);
 			textLine.setAttribute("y2", (circleYoffset - yoffset));
-			textLine.setAttribute("style", "stroke:#000000; stroke-width:3px;");
 			textLine.setAttribute("transform", "rotate(" + textLineRotate + " " + xOrigin + ", " + yOrigin + ")");
 			svg1.appendChild(textLine);
 			
@@ -206,7 +129,6 @@ for (var i = 0; i < data.length; i ++) {
 			textJ.setAttribute("fill", "#ffffff");
 			textJ.setAttribute("text-anchor", "middle");
 			textJ.setAttribute("alignment-baseline", "middle");
-			textJ.setAttribute("style", font);
 			textJ.setAttribute("transform", "rotate(" + textRotate + " " + xOrigin + ", " + yOrigin + ")");
 			textJ.setAttribute("onclick", "clickData(this.id)");
 			textJ.appendChild(document.createTextNode(textDataContent));
@@ -218,39 +140,10 @@ for (var i = 0; i < data.length; i ++) {
 		circleYoffset += yoffset;
 }
 
-//set date by ckicking day or month
-function clickData (clicked_id) {
-	var currentDate = document.getElementById('inputDate').value;
-	if (clicked_id.startsWith("days")) {
-		var month = Number(currentDate.slice(0,2));
-		var day = Number(clicked_id.slice(-2));
-		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
-//		alert("you are setting the date to: " + clickedDate);
-//		document.getElementById('inputDate').value = clickedDate;
-	localStorage.setItem('saveDate', clickedDate);
-	} else
-	if (clicked_id.startsWith("months")) {
-		var month = Number(clicked_id.slice(-2));
-		var day = Number(currentDate.slice(-2));
-		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
-//		alert("you are setting the date to: " + clickedDate);
-//		document.getElementById('inputDate').value = clickedDate;
-	localStorage.setItem('saveDate', clickedDate);
-	}
-	location.reload();
-}
-
-
 // check whether the 'saveDate' data item is stored in web Storage
 if(localStorage.getItem('saveDate')) {
 	var savedDate = localStorage.getItem('saveDate');
 	document.getElementById('inputDate').value=savedDate;
-	var currentDate = document.getElementById('inputDate').value;
-	var month = Number(currentDate.slice(0,2));
-	var day = Number(currentDate.slice(-2));
-	var season = Number(Math.ceil(month/4));
-	var weekday = weekdays[day-1];
-	document.getElementById('displayDate').innerHTML = 'Press "ENTER" or click "Set date" to set the dial hands';
 }
 
 // set date to what is shown in the input window
@@ -264,46 +157,39 @@ function setDate() {
 	seasonsRotation = (360/4 * season)-((360/4)/2);
 	monthsRotation = (360/16 * month)-((360/16)/2);
 	daysRotation = (360/32 * day)-((360/32)/2);
-
-	var animateTransformDays  = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
-	animateTransformDays.setAttribute("attributeName", "transform");
-	animateTransformDays.setAttribute("attributeType", "XML");
-	animateTransformDays.setAttribute("type", "rotate");
-	animateTransformDays.setAttribute("from", "0 400 400");
-	animateTransformDays.setAttribute("to", daysRotation + " 400 400");
-//	animateTransformDays.setAttribute("begin", "transformdays.end");
-	animateTransformDays.setAttribute("dur", "1s");
-	animateTransformDays.setAttribute("repeatCount", "1");
-	pointerLinedays.appendChild(animateTransformDays);
-	
-	var animateTransformMonths  = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
-	animateTransformMonths.setAttribute("attributeName", "transform");
-	animateTransformMonths.setAttribute("attributeType", "XML");
-	animateTransformMonths.setAttribute("type", "rotate");
-	animateTransformMonths.setAttribute("from", "0 400 400");
-	animateTransformMonths.setAttribute("to", monthsRotation + " 400 400");
-//	animateTransformMonths.setAttribute("begin", "transformmonths.end");
-	animateTransformMonths.setAttribute("dur", "1s");
-	animateTransformMonths.setAttribute("repeatCount", "1");
-	pointerLinemonths.appendChild(animateTransformMonths);
-	
-	var animateTransformSeasons  = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
-	animateTransformSeasons.setAttribute("attributeName", "transform");
-	animateTransformSeasons.setAttribute("attributeType", "XML");
-	animateTransformSeasons.setAttribute("type", "rotate");
-	animateTransformSeasons.setAttribute("from", "0 400 400");
-	animateTransformSeasons.setAttribute("to", seasonsRotation + " 400 400");
-//	animateTransformSeasons.setAttribute("begin", "transformseasons.end");
-	animateTransformSeasons.setAttribute("dur", "1s");
-	animateTransformSeasons.setAttribute("repeatCount", "1");
-	pointerLineseasons.appendChild(animateTransformSeasons);
-	
-	pointerLineseasons.setAttribute("transform", "rotate(" + seasonsRotation + " 400, 400)");
-	pointerLinemonths.setAttribute("transform", "rotate(" + monthsRotation + " 400, 400)");
-	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 400, 400)");
-
+	pointerLineseasons.setAttribute("transform", "rotate(" + seasonsRotation + " 400 400)");
+	pointerLinemonths.setAttribute("transform", "rotate(" + monthsRotation + " 400 400)");
+	pointerLinedays.setAttribute("transform", "rotate(" + daysRotation + " 400 400)");
 	localStorage.setItem('saveDate', currentDate);
 	}
+	
+function resetDate() {
+	localStorage.setItem('saveDate', "0101");
+	document.getElementById('inputDate').value = "0101";
+	location.reload(); 
+ }
+	
+//set date by ckicking day or month
+function clickData (clicked_id) {
+	var currentDate = document.getElementById('inputDate').value;
+	if (clicked_id.startsWith("days")) {
+		var month = Number(currentDate.slice(0,2));
+		var day = Number(clicked_id.slice(-2));
+		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
+//		alert("you are setting the date to: " + clickedDate);
+		document.getElementById('inputDate').value = clickedDate;
+	localStorage.setItem('saveDate', clickedDate);
+	} else
+	if (clicked_id.startsWith("months")) {
+		var month = Number(clicked_id.slice(-2));
+		var day = Number(currentDate.slice(-2));
+		var clickedDate = ("0" + month).slice(-2) + ("0" + day).slice(-2);
+//		alert("you are setting the date to: " + clickedDate);
+		document.getElementById('inputDate').value = clickedDate;
+	localStorage.setItem('saveDate', clickedDate);
+	}
+	location.reload();
+}
 
 //add a day to the date
 function addDay() {
@@ -322,13 +208,8 @@ function addDay() {
 	newSeasonsRotation = (360/4 * season)-((360/4)/2);
 	newMonthsRotation = (360/16 * month)-((360/16)/2);
 	newDaysRotation = (360/32 * day)-((360/32)/2);
-//	pointerLineseasons.setAttribute("transform", "rotate(" + newSeasonsRotation + " 400, 400)");
-//	pointerLinemonths.setAttribute("transform", "rotate(" + newMonthsRotation + " 400, 400)");
-//	pointerLinedays.setAttribute("transform", "rotate(" + newDaysRotation + " 400, 400)");
-
 	localStorage.setItem('saveDate', newDate);
 	location.reload()
-	setDate()
 	}	
 
 function resetDate() {
@@ -341,7 +222,6 @@ function resetDate() {
 // create div to hold moon
 var moonDiv = document.createElement('div');
 	moonDiv.setAttribute("id", "moonDiv");
-	moonDiv.setAttribute("style", "position: absolute; left: 855px; top: 100px; width: 200px; height: 200px;");
 	document.body.appendChild(moonDiv);
 
 // create svg to show moon
@@ -362,9 +242,6 @@ var moonMaskCircle = document.createElementNS("http://www.w3.org/2000/svg", "cir
 	moonMaskCircle.setAttribute("cx", "100");
 	moonMaskCircle.setAttribute("cy", "100");
 	moonMaskCircle.setAttribute("r", "99");
-//	moonMaskCircle.setAttribute("stroke", "#ffffff");
-//	moonMaskCircle.setAttribute("stroke-width", "1");
-	moonMaskCircle.setAttribute("fill", "#ffffff");
 	moonMask.appendChild(moonMaskCircle)
 
 //create path to show moon
@@ -386,13 +263,7 @@ var moonMaskPath = document.createElementNS("http://www.w3.org/2000/svg", "path"
 	if (day == 06 || day == 11 || day == 22 || day == 27) {var rad = " 167 167,"} else
 	if (day == 07 || day == 10 || day == 23 || day == 26) {var rad = " 260 260,"} else
 	if (day == 08 || day == 09 || day == 24 || day == 25) {var rad = " 753 753,"};
-
-//		alert (day + " " + sweep1 + " " + sweep2 + " " + rad);
 	moonMaskPath.setAttribute("d", "M 100 0, a 100 100, " + sweep1 + " 0 200, " + rad + sweep2 + " 0 -200  z");
-//	moonMaskPath.setAttribute("d", "M 100 0, a 100 100,     0 0 1,     0 200,   189 189, 0 0 1,    0 -200  z");
-	moonMaskPath.setAttribute("fill", "#333333");
-//	moonMaskPath.setAttribute("stroke", "#000000");
-//	moonMaskPath.setAttribute("stroke-width", "1");
 	moonMask.appendChild(moonMaskPath);
 
 
