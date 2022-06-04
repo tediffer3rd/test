@@ -1,8 +1,3 @@
-var fontLink = document.createElement('link');
-	fontLink.setAttribute("rel", "stylesheet");
-	fontLink.setAttribute("href", "https://fonts.googleapis.com/css?family=Sofia");
-//	document.head.appendChild(fontLink);
-var font = "font-family: Sofia; font-size: 23px;"
 
 var seasons = ["Sepren", "Somner", "Autun", "Wevner"];
 var months = ["Solaris", "Seprensdor", "Fonsoc", "Ganrehm", "Calidum", "Somnercrest", "Aesoc", "Jehmri", "Lunaris", "Autunsveil", "Cadoc", "Nehnma", "Frigus", "Wevnercrest", "Hemoc", "Duhmret"];
