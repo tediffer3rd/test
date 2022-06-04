@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>The Calendar of Elyria</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+	<link rel="stylesheet" href="slices.css">
+
+</head>
+<body>
+<div id="main">
+
+<form id="inputForm">
+<input id="inputDate" type="int" value="0101" method="submit" autofocus="">
+<input id="setDateButton" type="button" value="Set date" onclick="setDate()">
+<input id="addDayButton" type="button" value="Add day" onclick="addDay()">
+<input id="resetButton" type="button" value="Reset date" onclick="resetDate()">
+</form>
+
+<div id="displayDate">
+Enter the current date in the box above and press "ENTER" or click the "Set date" button
+</div>
+
+<script src="slices.js"></script>
+
+
+</div>
+</body>
+</html>

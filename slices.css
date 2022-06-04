@@ -1,0 +1,154 @@
+
+body {
+	background-image: url("forrestdrk.png");
+	background-size: cover;
+	background-attachment: fixed;
+	font-family: "Sofia", sans-serif;
+	font-size: 23px;
+}
+
+#main {}
+
+#inputForm {
+	position: absolute;
+	left: 85px;
+	top: 25px;
+//	width: 500px;
+//	height: 50px;
+//	border: 1px solid black;
+	padding: 0px;
+	margin: 0px;
+}
+
+#inputDate {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	border: 1px solid black;
+	padding: 5px;
+	margin: 0px;
+}
+	
+#setDateButton {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	border: 1px solid black;
+	padding: 5px;
+	margin: 0px;
+}
+
+#addDayButton {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	border: 1px solid black;
+	padding: 5px;
+	margin: 0px;
+}
+
+#resetButton {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	border: 1px solid black;
+	padding: 5px;
+	margin: 0px;
+}
+
+#displayDate {
+	position: absolute;
+	left: 85px;
+	top: 55px;
+	color: #ffffff;
+	font-size: 30px; 
+	font-weight: normal;
+//	border: 1px solid black;
+}
+
+#calendar {
+	position: absolute;
+	left: 50px;
+	top: 100px;
+	width: 800px;
+	height: 800px;
+	border: 3px solid black; 
+	border-radius:50%; 
+	background: conic-gradient(from 17deg, #009900, #cc0000, #cc0000, #ff8000, #ff8000, #0000ff, #0000ff, #009900, #009900);
+}
+
+circle {
+	stroke: black;
+	stroke-width: 3;
+	fill: none;
+}
+	
+#bigRedCircle {
+	fill: #ff0000;
+}
+
+#littleBlackDot {
+	fill: #000000;
+}
+
+line {
+	stroke: #000000;
+	stroke-width: 3px;
+}
+
+.dividingCircle {
+	stroke: #000000;
+	stroke-width: 3px;
+	fill: none;
+}
+
+.pointerLine {
+	stroke: #000000; 
+	stroke-linecap: round;
+}
+
+#pointerLinedays {
+	stroke-width: 10px; 
+}
+
+#pointerLinemonths {
+	stroke-width: 15px; 
+}
+
+#pointerLineseasons {
+	stroke-width: 20px; 
+}
+
+.textLine {
+	stroke:#000000; 
+	stroke-width: 3px;
+}
+
+.textJ {
+	font-size: 22px; 
+	font-weight: normal;
+	fill: #ffffff;
+	text-anchor: middle;
+	alignment-baseline: middle;
+	
+}
+
+#moonDiv {
+	position: absolute; 
+	left: 850px; 
+	top: 100px; 
+	width: 200px; 
+	height: 200px;
+}
+
+#moonMaskCircle {
+	stroke: #000000;
+	stroke-width: 1px;
+	fill: #ffffff;
+}
+
+#moonMaskPath {
+	fill: #333333;
+	stroke: #000000;
+	stroke-width: 1px;
+}
